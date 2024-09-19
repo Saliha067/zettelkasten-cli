@@ -2,7 +2,7 @@ import typer
 from rich import print
 import subprocess
 from zettelkasten_cli.utils import format_date
-from zettelkasten_cli.config import ZETTELKASTEN_ROOT
+from zettelkasten_cli.config import ZETTELKASTEN_ROOT,INBOX_PATH
 from datetime import datetime
 from pathlib import Path
 
@@ -15,6 +15,10 @@ DAILY_NOTES_PATH = ZETTELKASTEN_ROOT / "periodic-notes" / "daily-notes"
 TODAY_NOTE_PATH = DAILY_NOTES_PATH / f"{TODAY}.md"
 WEEKLY_NOTES_PATH = ZETTELKASTEN_ROOT / "periodic-notes" / "weekly-notes"
 
+# Create directories if they don't exist
+DAILY_NOTES_PATH.mkdir(parents=True, exist_ok=True)
+WEEKLY_NOTES_PATH.mkdir(parents=True, exist_ok=True)
+INBOX_PATH.mkdir(parents=True, exist_ok=True)
 
 def format_daily_note_content() -> str:
     """
